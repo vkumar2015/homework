@@ -1,3 +1,15 @@
+Diceroll:
+  - face: integer
+  - url: string
+
+Bookslist:
+  - title: string
+  - author: string
+
+
+
+
+
 # Example table for a typical Book model.
 #
 # Book:
