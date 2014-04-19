@@ -2,11 +2,9 @@ Diceroll:
   - face: integer
   - url: string
 
-Bookslist:
+Book:
   - title: string
   - author: string
-
-
 
 
 

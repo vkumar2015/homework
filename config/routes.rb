@@ -4,7 +4,7 @@ Homework::Application.routes.draw do
 
   get "/dice/roll" => "homework/diceroll"
 
-  get "/books/list" => "homework/bookslist"
+  get "/books/list" => "homework/books"
 
 end
 

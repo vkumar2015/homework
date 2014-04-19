@@ -5,7 +5,7 @@
   <th style="border:1px solid grey;" align="left">Title</th>
   <th style="border:1px solid grey;" align="left">Author</th>
 </tr>
-<% bookslist = Bookslist.read %>
+<% bookslist = Book.read %>
 <% bookslist.each do |book| %>
   <tr>
     <td style="border:1px solid grey;"><%= book["title"] %></td>
