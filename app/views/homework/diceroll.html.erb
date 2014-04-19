@@ -10,7 +10,6 @@ Each time you visit or refresh this page, two random numbers from 1 to 6 will be
 
 <p>Now here images of dice are displayed that will have the same face numbers as two random numbers generated above
   <br><% dicerollimage1 = Diceroll.read(random1) %>
-  <%= dicerollimage1["url"] %>
   <img src = <%= dicerollimage1["url"] %> alt="Dice Image1" width="80" height="80">
   <% dicerollimage2 = Diceroll.read(random2) %>
   <img src = <%= dicerollimage2["url"] %> alt="Dice Image2" width="80" height="80">
