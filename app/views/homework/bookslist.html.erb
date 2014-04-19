@@ -1,1 +1,15 @@
 <h1>List of Books</h1>
+
+<table style="width:500px; border:1px solid grey; border-collapse:collapse;">
+<tr>
+  <th style="border:1px solid grey;" align="left">Title</th>
+  <th style="border:1px solid grey;" align="left">Author</th>
+</tr>
+<% bookslist = Bookslist.read %>
+<% bookslist.each do |book| %>
+  <tr>
+    <td style="border:1px solid grey;"><%= book["title"] %></td>
+    <td style="border:1px solid grey;"><%= book["author"] %></td>
+  </tr>
+<% end %>
+</table>
