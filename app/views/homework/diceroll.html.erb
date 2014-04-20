@@ -2,15 +2,13 @@
 
 Each time you visit or refresh this page, two random numbers from 1 to 6 will be displayed, like rolling a pair of dice
 <ul>
-  <% random1 = 1 + rand(6) %>
-  <li><%= random1 %></li>
-  <% random2 = 1 + rand(6) %>
-  <li><%= random2 %></li>
+  <% randomdice1 = Diceroll.sample %>
+  <li><%= randomdice1["face"] %></li>
+  <% randomdice2 = Diceroll.sample %>
+  <li><%= randomdice2["face"] %></li>
 </ul>
 
 <p>Now here images of dice are displayed that will have the same face numbers as two random numbers generated above
-  <br><% dicerollimage1 = Diceroll.read(random1) %>
-  <img src = <%= dicerollimage1["url"] %> alt="Dice Image1" width="80" height="80">
-  <% dicerollimage2 = Diceroll.read(random2) %>
-  <img src = <%= dicerollimage2["url"] %> alt="Dice Image2" width="80" height="80">
+  <br><img src = <%= randomdice1["url"] %> alt="Dice Image1" width="80" height="80">
+  <img src = <%= randomdice2["url"] %> alt="Dice Image2" width="80" height="80">
 <br>Cool isnt it!</p>
