@@ -1,22 +1,22 @@
 
 
-<h2>Editor's Pick: </h2>
-<% all_reviews = Review.read %>
-<% all_reviews.each do |review| %>
-      <% the_book = Book.where("id" => review["book_id"]) %>
-      <% the_book["avg_rating"] = Review.average("rating") %>
+<h2>Editor's Pick:</h2>
+<% all_book = Book.read %>
+<% all_book.each do |book| %>
+      <% the_avg_rating = Review.where("book_id" => book["id"]).average("rating") %>
+      <% book["avg_rating"] = the_avg_rating %>
 <% end %>
 
 <% max_avg_rating = Book.maximum("avg_rating") %>
 <% editors_pick = Book.first %>
 <% all_books = Book.read %>
 <% all_books.each do |book| %>
-      <% if ( book["avg_rating"] == max_avg_rating ) %>
-        <% editors_pick = Book.where("id" => book["id"]) %>
+      <% if ( book["avg_rating"] = max_avg_rating ) %>
+        <% editors_pick = book %>
       <%end %>
 <% end %>
 
-<h2>Book: <%= link_to editors_pick["title"], "/books/#{book.where("id" => editors_pick["id"])} %></h2>
+<h2>Book: <%= link_to editors_pick["title"], "/books/#{editors_pick["id"]}" %></h2>
 <br><strong>Author:</strong> <%= editors_pick["author"] %>
 <br><strong>Price:</strong> $<%= editors_pick["price"] %>
 <br><% avg_rating = Review.where("book_id" => editors_pick.id).average("rating") %>
