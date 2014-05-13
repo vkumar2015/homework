@@ -1,0 +1,38 @@
+
+<% the_id = params["id"] %>
+<% the_book = Book.read(the_id) %>
+
+<h2>Book: <%= the_book["title"] %> </h2>
+<br><strong>Author:</strong> <%= the_book["author"] %>
+<br><strong>Price:</strong> $<%= the_book["price"] %>
+<br><% avg_rating = Review.where("book_id" => the_book.id).average("rating") %>
+<% if avg_rating.present? %>
+  <strong>Average Star Rating:</strong> <%= number_with_precision(avg_rating, :precision => 1)  %>
+<% else %>
+ <strong>Average Star Rating:</strong> Sorry! There are no ratings for this book currently
+<% end %>
+<hr>
+
+<h4>What other readers are saying about the book:</h4>
+<% if avg_rating.present? %>
+  <% reviews = Review.where("book_id" => the_book["id"]) %>
+  <ul>
+    <% reviews.each do |review| %>
+      <li>
+        <strong>Reader: </strong>
+        <br><strong>Rating: </strong><%= review["rating"] %>
+        <br><strong>Review: </strong><%= review["review"] %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+ Sorry! There are no reviews for this book currently.
+<% end %>
+
+
+<hr>
+<p>
+  <%= link_to "Go back to List of Books in the Store ", "/books" %>
+</p>
+
+

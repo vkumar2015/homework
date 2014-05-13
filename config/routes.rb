@@ -1,10 +1,21 @@
 Homework::Application.routes.draw do
 
+  # Homework Wk3
+
   get "/homework" => "homework/index"
 
   get "/dice/roll" => "homework/diceroll"
 
   get "/books/list" => "homework/books"
+
+
+  # Homework Wk6
+
+  get "/books" => "books#index"
+
+  get "/books/:id" => "books#show"
+
+  get "/" => "books#editorspick"
 
 end
 

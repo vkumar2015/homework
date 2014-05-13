@@ -1,10 +1,26 @@
+
+# Homework Wk3
+
 Diceroll:
   - face: integer
   - url: string
 
+# Book:
+#  - title: string
+#  - author: string
+
+
+# Homework Wk6
+
 Book:
   - title: string
   - author: string
+  - price: integer
+
+Review:
+  - book_id: integer
+  - rating: integer
+  - review: string
 
 
 
