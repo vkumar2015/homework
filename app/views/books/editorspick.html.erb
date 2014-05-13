@@ -1,10 +1,10 @@
-<!-- Vist home page, see editors oick & clicking on title go to book show -->
 
-Editor's Pick:
+
+<h2>Editor's Pick: </h2>
 <% all_reviews = Review.read %>
 <% all_reviews.each do |review| %>
       <% the_book = Book.where("id" => review["book_id"]) %>
-      the_book["avg_rating"] = Review.average("rating") %>
+      <% the_book["avg_rating"] = Review.average("rating") %>
 <% end %>
 
 <% max_avg_rating = Book.maximum("avg_rating") %>
@@ -16,7 +16,7 @@ Editor's Pick:
       <%end %>
 <% end %>
 
-<h2>Book: <%= editors_pick["title"] %> </h2>
+<h2>Book: <%= link_to editors_pick["title"], "/books/#{book["id" => editors_pick["id"]} %></h2>
 <br><strong>Author:</strong> <%= editors_pick["author"] %>
 <br><strong>Price:</strong> $<%= editors_pick["price"] %>
 <br><% avg_rating = Review.where("book_id" => editors_pick.id).average("rating") %>
