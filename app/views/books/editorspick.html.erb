@@ -1,15 +1,22 @@
 <!-- Vist home page, see editors oick & clicking on title go to book show -->
 
 Editor's Pick:
-<% all_ratings = Review.read %>
-<% all_ratings.each do |rating| %>
-      <% book_rating = Review.where(the_book_id => rating["book_id"] %>
+<% all_reviews = Review.read %>
+<% all_reviews.each do |review| %>
+      <% the_book = Book.where("id" => review["book_id"]) %>
+      the_book["avg_rating"] = Review.average("rating") %>
 <% end %>
 
-<% editors_pick_id = Review.maximum("rating") %>
-<% editors_pick = Book.where("id" => editors_pick_id["book_id"]) %>
+<% max_avg_rating = Book.maximum("avg_rating") %>
+<% editors_pick = Book.first %>
+<% all_books = Book.read %>
+<% all_books.each do |book| %>
+      <% if ( book["avg_rating"] == max_avg_rating ) %>
+        <% editors_pick = Book.where("id" => book["id"]) %>
+      <%end %>
+<% end %>
 
-<h2>Book: <%= editors_pick["book_id"] %> </h2>
+<h2>Book: <%= editors_pick["title"] %> </h2>
 <br><strong>Author:</strong> <%= editors_pick["author"] %>
 <br><strong>Price:</strong> $<%= editors_pick["price"] %>
 <br><% avg_rating = Review.where("book_id" => editors_pick.id).average("rating") %>

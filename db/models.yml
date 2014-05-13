@@ -16,6 +16,7 @@ Book:
   - title: string
   - author: string
   - price: integer
+  - avg_rating: integer
 
 Review:
   - book_id: integer
